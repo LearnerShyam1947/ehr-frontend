@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   Activity,
+  Building2,
   Calendar,
   FileText,
   Home,
@@ -24,6 +25,7 @@ import SettingsPage from '../components/dashboard/Settings';
 import { useAuth } from '../contexts/AuthContext';
 import Profile from '../pages/users/Profile';
 import MySwal from '../config/MySwal';
+import HospitalDetails from '../components/dashboard/HospatialDetails';
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const location = useLocation();
@@ -41,8 +43,9 @@ const Dashboard = () => {
     { path: '/dashboard/appointments', icon: <Calendar size={20} />, label: 'Appointments', allowedRoles: ['DOCTOR', 'PATIENT'] },
     { path: '/dashboard/applications', icon: <FileText size={20} />, label: 'Applications', allowedRoles: ['ADMIN'] },
     { path: '/dashboard/records', icon: <FileText size={20} />, label: 'Medical Records', allowedRoles: ['PATIENT'] },
-    { path: '/dashboard/access-list', icon: <FileText size={20} />, label: 'Access List', allowedRoles: ['PATIENT'] },  
+    { path: '/dashboard/access-list', icon: <FileText size={20} />, label: 'Access List', allowedRoles: ['PATIENT'] },
     { path: '/dashboard/lab-test-requests', icon: <FileText size={20} />, label: 'Lab Test Requests', allowedRoles: ['LAB_TECHNICIAN'] },
+    { path: '/dashboard/hospital-details', icon: <Building2 size={20} />, label: 'Hospital Details', allowedRoles: ['ADMIN'] },
     { path: '/dashboard/settings', icon: <Settings size={20} />, label: 'Settings', allowedRoles: ['ADMIN', 'DOCTOR', 'LAB_TECHNICIAN', 'PATIENT'] },
   ];
 
@@ -117,7 +120,7 @@ const Dashboard = () => {
 
           {/* <div className="mt-8 pt-4 border-t">
             <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">
-              Blockchain Status
+              Cloud Status
             </h3>
             <div className="bg-green-50 p-3 rounded-md">
               <div className="flex items-center justify-between mb-2">
@@ -198,6 +201,11 @@ const Dashboard = () => {
                 <Route path="/applications" element={
                   <ProtectedRoute allowedRoles={['ADMIN']}>
                     <Applications />
+                  </ProtectedRoute>
+                } />
+                <Route path="/hospital-details" element={
+                  <ProtectedRoute allowedRoles={['ADMIN']}>
+                    <HospitalDetails />
                   </ProtectedRoute>
                 } />
                 <Route path="/profile/:id" element={<Profile />} />

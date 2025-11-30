@@ -106,11 +106,11 @@ const Settings = () => {
                 </div>
 
                 {/* <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Blockchain Settings</h3>
+                <h3 className="text-lg font-semibold mb-4">Cloud Settings</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Blockchain Network
+                            Cloud Network
                         </label>
                         <select className="input-field">
                             <option>Private Network</option>
@@ -150,7 +150,7 @@ const Settings = () => {
                     </div>
                 </div>
                 <div className="mt-6">
-                    <button className="btn-primary">Save Blockchain Settings</button>
+                    <button className="btn-primary">Save Cloud Settings</button>
                 </div>
             </div> */}
             </div>

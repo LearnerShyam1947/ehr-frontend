@@ -27,7 +27,7 @@ const HeroCarousel = () => {
   const slides = [
     {
       id: 1,
-      title: "Revolutionizing Healthcare with Blockchain",
+      title: "Revolutionizing Healthcare with Cloud",
       subtitle: "Secure, transparent, and efficient hospital management system",
       image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2091&q=80",
       cta: "Get Started",

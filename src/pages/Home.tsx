@@ -19,7 +19,7 @@ const Home = () => {
     {
       icon: <Shield className="w-12 h-12 text-blue-500" />,
       title: "Secure Data",
-      description: "Blockchain technology ensures your medical data is secure, immutable, and tamper-proof."
+      description: "Cloud technology ensures your medical data is secure, immutable, and tamper-proof."
     },
     {
       icon: <Clock className="w-12 h-12 text-blue-500" />,
@@ -59,7 +59,7 @@ const Home = () => {
               viewport={{ once: true }}
               variants={fadeIn}
             >
-              <h2 className="section-title wow fadeInUp" data-wow-delay="0.1s">Blockchain-Powered Healthcare</h2>
+              <h2 className="section-title wow fadeInUp" data-wow-delay="0.1s">Cloud-Powered Healthcare</h2>
               <p className="section-subtitle wow fadeInUp" data-wow-delay="0.2s">
                 Our platform leverages cloud technology to create a secure, transparent, and efficient
                 hospital management system that puts patients first.

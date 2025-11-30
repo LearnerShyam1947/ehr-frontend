@@ -24,7 +24,7 @@ const About = () => {
       name: "Michael Chen",
       role: "CTO",
       image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=256&q=80",
-      bio: "Blockchain expert with a background in medical informatics and secure systems architecture."
+      bio: "Cloud expert with a background in medical informatics and secure systems architecture."
     },
     {
       name: "Emily Rodriguez",
@@ -280,7 +280,7 @@ const About = () => {
             </div>
           </div>
         </section>
-        {/* Blockchain Technology */}
+        {/* Cloud Technology */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -292,7 +292,7 @@ const About = () => {
                 viewport={{ once: true }}
                 variants={fadeIn}
               >
-                <h2 className="section-title">Our Blockchain Technology</h2>
+                <h2 className="section-title">Our Cloud Technology</h2>
                 <p className="text-gray-600 mb-6">
                   SecureEHR utilizes a private, permissioned cloud network specifically designed for healthcare applications.
                   This ensures that only authorized parties can access and verify medical records while maintaining the highest
@@ -334,7 +334,7 @@ const About = () => {
               >
                 <img
                   src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                  alt="Blockchain Technology"
+                  alt="Cloud Technology"
                   className="rounded-lg shadow-lg w-full"
                 />
               </motion.div>

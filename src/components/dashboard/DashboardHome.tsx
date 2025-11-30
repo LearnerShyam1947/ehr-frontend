@@ -1,51 +1,156 @@
 import {
     Calendar,
-    Database,
-    FileText,
-    Shield,
     User,
     Users
 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { dashboardDetails } from './../../services/DashboardService';
+import { useAuth } from '../../contexts/AuthContext';
 
-const DashboardHome = () => (
-    <div className="p-6">
-        <h2 className="text-2xl font-bold mb-6">Dashboard Overview</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white rounded-lg shadow-md p-6">
+const DashboardHome = () => {
+
+    const [details, setDetails] = useState([]);
+    const { user } = useAuth();
+
+    const fetchAndSetDetails = async () => {
+        const resp = await dashboardDetails();
+        setDetails(resp);
+    }
+
+    useEffect(() => {
+        fetchAndSetDetails();
+    }, [])
+
+    return (
+        <div className="p-6">
+            <h2 className="text-2xl font-bold mb-6">Dashboard Overview</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+                {
+                    user?.role === "ADMIN" ? (
+                        <>
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Total Users</h3>
+                                    <Users className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[0]?.cnt}</p>
+                                {/* <p className="text-sm text-green-600 mt-2">+12% from last month</p> */}
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Active Applications</h3>
+                                    <Calendar className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[1]?.cnt}</p>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Hospitals</h3>
+                                    <User className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[2]?.cnt}</p>
+                            </div>
+                        </>
+                    ) : user?.role === "LAB_TECHNICIAN" ? (
+                        <>
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Total Users</h3>
+                                    <Users className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[0]?.cnt}</p>
+                                {/* <p className="text-sm text-green-600 mt-2">+12% from last month</p> */}
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Active Reports</h3>
+                                    <Calendar className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[1]?.cnt}</p>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Hospitals</h3>
+                                    <User className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[2]?.cnt}</p>
+                            </div>
+                        </>
+                    ) : user?.role === "DOCTOR" ? (
+                        <>
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Total Users</h3>
+                                    <Users className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[0]?.cnt}</p>
+                                {/* <p className="text-sm text-green-600 mt-2">+12% from last month</p> */}
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Active Appointments</h3>
+                                    <Calendar className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[1]?.cnt}</p>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Hospitals</h3>
+                                    <User className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[2]?.cnt}</p>
+                            </div>
+                        </>
+                    ) : user?.role === "PATIENT" ? (
+                        <>
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Appointments</h3>
+                                    <Users className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[0]?.cnt}</p>
+                                {/* <p className="text-sm text-green-600 mt-2">+12% from last month</p> */}
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Active Reports</h3>
+                                    <Calendar className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[1]?.cnt}</p>
+                            </div>
+
+                            <div className="bg-white rounded-lg shadow-md p-6">
+                                <div className="flex items-center justify-between mb-4">
+                                    <h3 className="text-lg font-semibold text-gray-700">Access Records</h3>
+                                    <User className="h-8 w-8 text-blue-500" />
+                                </div>
+                                <p className="text-3xl font-bold text-gray-800">{details[2]?.cnt}</p>
+                            </div>
+                        </>
+                    ) : <></>
+                }
+
+
+
+                {/* <div className="bg-white rounded-lg shadow-md p-6">
                 <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-700">Total Patients</h3>
-                    <Users className="h-8 w-8 text-blue-500" />
-                </div>
-                <p className="text-3xl font-bold text-gray-800">1,284</p>
-                {/* <p className="text-sm text-green-600 mt-2">+12% from last month</p> */}
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-700">Appointments</h3>
-                    <Calendar className="h-8 w-8 text-blue-500" />
-                </div>
-                <p className="text-3xl font-bold text-gray-800">42</p>
-                {/* <p className="text-sm text-green-600 mt-2">Today's scheduled</p> */}
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-700">Staff Members</h3>
-                    <User className="h-8 w-8 text-blue-500" />
-                </div>
-                <p className="text-3xl font-bold text-gray-800">68</p>
-                <p className="text-sm text-gray-600 mt-2">Active personnel</p>
-            </div>
-            {/* <div className="bg-white rounded-lg shadow-md p-6">
-                <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-700">Blockchain Status</h3>
+                    <h3 className="text-lg font-semibold text-gray-700">Cloud Status</h3>
                     <Shield className="h-8 w-8 text-blue-500" />
                 </div>
                 <p className="text-3xl font-bold text-gray-800">100%</p>
                 <p className="text-sm text-green-600 mt-2">All systems operational</p>
             </div> */}
-        </div>
+            </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-white rounded-lg shadow-md p-6">
                 <h3 className="text-lg font-semibold text-gray-700 mb-4">Patient Admissions</h3>
                 <div className="h-64 bg-gray-100 rounded flex items-center justify-center">
@@ -93,8 +198,10 @@ const DashboardHome = () => (
                     </div>
                 </div>
             </div>
+        </div> */}
+
         </div>
-    </div>
-);
+    )
+};
 
 export default DashboardHome;
