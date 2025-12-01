@@ -201,7 +201,13 @@ const Profile: React.FC = () => {
                         </div>
                         <div className="break-all">
                           <span className="text-sm text-gray-500">Lab Technician</span>
-                          <p className="font-medium text-sm">{record.labDetails.name}</p>
+                          <p className="font-medium text-sm">
+                            {
+                              record.labDetails 
+                                ? record.labDetails.name 
+                                : "Not assigned"
+                            }
+                          </p>
                         </div>
                       </div>
                     </div>
