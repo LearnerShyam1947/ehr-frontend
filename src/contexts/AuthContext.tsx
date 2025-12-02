@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { User } from '../types/User';
 import * as authService from "../services/AuthService"
+import { fetchAllUsers } from "../services/UserService"
+import MySwal from '../config/MySwal';
 
 interface AuthContextType {
   user: User | null;
@@ -17,13 +19,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const checkJWT = async () => {
+    try {
+      await fetchAllUsers();
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+      setLoading(false);
+    } catch (e: any) {
+      MySwal.fire({
+        title: "Error!",
+        text: "User session expired please login again",
+        icon: "error"
+      })
+    }
+  }
+
   useEffect(() => {
     // Simulate checking auth state
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
-    setLoading(false);
+    checkJWT();
+
   }, []);
 
   const login = async (data: any) => {

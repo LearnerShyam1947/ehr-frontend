@@ -14,6 +14,10 @@ export const fetchUserData = async (id: string) => {
 export const fetchAllUsers = async () => {
     const jwtToken = localStorage.getItem("accessToken");
 
+    if(!jwtToken) {
+        return { error: "session expired" }
+    }
+
     try {
         const response = await fetch(
             `${import.meta.env.VITE_API_URL}api/v1/user`,

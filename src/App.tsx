@@ -20,6 +20,7 @@ import SetPassword from './pages/auth/SetPassword';
 import TwoFactorSetup from './pages/auth/TwoFactorSetup';
 import TwoFactorVerify from './pages/auth/TwoFactorVerify';
 import ApplyAppointment from './pages/users/ApplyAppointment';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/set-password/:token" element={<SetPassword />} />
                 <Route path="/two-factor-setup" element={<TwoFactorSetup />} />
                 <Route path="/two-factor-verify" element={<TwoFactorVerify />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/no-access" element={<NoAccess />} />
                 <Route path="*" element={<NotFound />} />
 
