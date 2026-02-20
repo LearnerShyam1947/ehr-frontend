@@ -151,11 +151,7 @@ const LabTestRequests = () => {
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {report.doctorId == "0" ? 'Not Assigned' : report.labDetails.name}
-                                        {
-                                            user?.id == report.labDetails.id 
-                                                ? <span> (you)</span>
-                                                : <></>
-                                        }
+                                        {report.doctorId == "0" ? <></> : user?.id == report.labDetails.id ? <span> (you)</span> : <></>}
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                     {
